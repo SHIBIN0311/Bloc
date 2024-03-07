@@ -1,5 +1,3 @@
-// ignore: file_names
-import 'dart:developer';
 
 import 'package:bloc_state_management/bloc/counter_bloc.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +8,6 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log("builder()->Noncalled");
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -26,7 +23,6 @@ class MyHomePage extends StatelessWidget {
             ),
             BlocBuilder<CounterBloc, CounterState>(
               builder: (context, state) {
-                log("builder()->Noncalled");
                 return Text(
                   '${state.count}',
                   style: Theme.of(context).textTheme.headlineMedium,
@@ -48,7 +44,6 @@ class MyHomePage extends StatelessWidget {
           ),
           FloatingActionButton(
             onPressed: () {
-              // BlocProvider.of<CounterBloc>(context).add(Increment());
               context.read<CounterBloc>().add(Decrement());
             },
             tooltip: 'decrement',
